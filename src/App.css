@@ -10,10 +10,42 @@ div {
   text-align: center;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 h1 {
   color: #333;
-  margin-top: 20px;
   font-size: 36px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  
+}
+
+nav a:hover {
+  color: #4a90e2;
+}
+
+h2 {
+  color: #333;
+  font-size: 28px;
+  margin-top: 20px;
 }
 
 p {
