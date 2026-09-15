@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d dist -r github",
+    "deploy" : "gh-pages -d dist -o github",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
