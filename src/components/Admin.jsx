@@ -1,30 +1,12 @@
 import { useState, useEffect } from "react";
-
-const API = "";
-const API_KEY = "";
-
-const headers = () => ({ "X-Access-Key": API_KEY, "Content-Type": "application/json"});
-
-async function readBin() { 
-  const res = await fetch(`${API}/latest`, { headers: headers() });
-  if (!res.ok) throw new Error (`read failed: ${res.status}`);
-  return (await res.json()).record;
-}
-
-async function updateBin(dogs) {
-  const res = await fetch(API, {
-    method: "PUT",
-    headers: headers(),
-    body: JSON.stringify(dogs),
-  });
-  if (!res.ok) throw new Error(`update failed: ${res.status}`);
-}
+import { getAllDogs, updateBin } from "../api/dogs-api.jsx"
 
 function Admin(){
   const [dogs, setDogs] = useState([]);
   
 useEffect(() => {
-  readBin().then(setDogs).catch(console.error)
+  getAllDogs()
+    .then(setDogs)
 },[])
 
   const togglePresent = async (chipNumber) => {
