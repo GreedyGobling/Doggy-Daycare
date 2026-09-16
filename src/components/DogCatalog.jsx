@@ -1,16 +1,19 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { getAllDogs } from "../api/dogs-api";
+import './DogCatalog.css'
 
 function DogCatalog() {
   const [dogs, setDogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getAllDogs()
           .then(setDogs)
+          .finally(() => setLoading(false))
   }, []);
 
-  if (dogs.length === 0) {
+  if (loading) {
     return <p className="loading">Loading dogs...</p>;
   }
 
