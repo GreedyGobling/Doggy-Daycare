@@ -1,5 +1,6 @@
 import {  useState, useEffect } from 'react'
 import './App.css'
+import Admin from './components/Admin.jsx'
 
 function App() {
 
@@ -18,6 +19,7 @@ useEffect(() => {
 }, [])
 
   return (
+
     <div>
       <header>
         <h1>Doggy Daycare</h1>
