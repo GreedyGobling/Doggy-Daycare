@@ -7,7 +7,8 @@ const MODE ={
 }
 function Admin(){
   const [dogs, setDogs] = useState([]);
-  
+  const [editing, setEditing] = useState([]);
+
 useEffect(() => {
   getAllDogs()
     .then(setDogs)
@@ -42,13 +43,14 @@ useEffect(() => {
           {dogs.map((dog) => (
             <div key={dog.chipNumber} style={card}>
               <img src={dog.img} alt={dog.name} width="100%" />
-              <h2>{dog.name}</h2>
-              <p>Age: {dog.age}</p>
+              {/* <h2>{dog.name}</h2> */}
+              <input type="text" name="name" value={dog.name}/>
+              {/* <p>Age: {dog.age}</p> */}
               <p>Breed: {dog.breed}</p>
               <p>Sex: {dog.sex}</p>
-              <p>present: {dog.present ? "yes" : "no"}</p>
-              <p>Owner: {dog.owner.name} {dog.owner.lastName}</p>
-              <p>PhoneNumber: {dog.owner.phoneNumber}</p>
+              {/* <p>present: {dog.present ? "yes" : "no"}</p> */}
+              {/* <p>Owner: {dog.owner.name} {dog.owner.lastName}</p> */}
+              {/* <p>PhoneNumber: {dog.owner.phoneNumber}</p> */}
             </div>
           ))}
         </div>
