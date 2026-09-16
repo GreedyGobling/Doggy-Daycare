@@ -29,7 +29,7 @@ useEffect(() => {
   };
 
   const grid = { display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))" };
-  const card = { border: "1px solid #ccc", borderRadius: 8, padding: 12, textAlign: "left" };
+  const card = { border: "1px solid #ccc", borderRadius: 8, padding: 12, textAlign: "left", minWidth: 0 };
 
   return(
   <>
