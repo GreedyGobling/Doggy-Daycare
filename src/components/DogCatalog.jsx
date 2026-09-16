@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { getAllDogs } from "../api/dogs-api";
-import './DogCatalog.css'
+import "./DogCatalog.css";
+import defaultDog from "../assets/defaultDogImg.jpg";
 
 function DogCatalog() {
   const [dogs, setDogs] = useState([]);
@@ -9,8 +10,8 @@ function DogCatalog() {
 
   useEffect(() => {
     getAllDogs()
-          .then(setDogs)
-          .finally(() => setLoading(false))
+      .then(setDogs)
+      .finally(() => setLoading(false));
   }, []);
 
   if (loading) {
@@ -23,7 +24,12 @@ function DogCatalog() {
       <div className="dog-grid">
         {dogs.map((dog) => (
           <div className="dog-card" key={dog.chipNumber}>
-            <img src={dog.img}/>
+            <img
+              src={dog.img}
+              onError={(e) => {
+                e.currentTarget.src = defaultDog;
+              }}
+            />
             <h2>{dog.name}</h2>
             <p>Breed: {dog.breed}</p>
             <p>Age: {dog.age}</p>
