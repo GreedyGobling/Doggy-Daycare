@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { getAllDogs, updateBin } from "../api/dogs-api.jsx"
 
+const MODE ={
+  VIEW: 'view',
+  EDIT: 'edit',
+}
 function Admin(){
   const [dogs, setDogs] = useState([]);
   
@@ -8,6 +12,7 @@ useEffect(() => {
   getAllDogs()
     .then(setDogs)
 },[])
+  
 
   const togglePresent = async (chipNumber) => {
     const next = dogs.map((dog) =>
@@ -27,6 +32,10 @@ useEffect(() => {
 
   return(
   <>
+      <header>
+        <button onClick={() => getAllDogs().then(setDogs)}>Get Dogs</button>
+        <button onClick={() => updateBin(dogs)}>Update</button>
+      </header>
       <section>
         <h1>hello</h1>
         <div style={grid}>
@@ -37,12 +46,9 @@ useEffect(() => {
               <p>Age: {dog.age}</p>
               <p>Breed: {dog.breed}</p>
               <p>Sex: {dog.sex}</p>
-              <button onClick={() => togglePresent(dog.chipNumber)}>
-                Present: {dog.present ? "yes" : "no"}
-              </button>
-              <p>
-                Owner: {dog.owner.name} {dog.owner.lastName} ({dog.owner.phoneNumber})
-              </p>
+              <p>present: {dog.present ? "yes" : "no"}</p>
+              <p>Owner: {dog.owner.name} {dog.owner.lastName} ({dog.owner.phoneNumber})</p>
+              <p>PhoneNumber: {dog.owner.phoneNumber}</p>
             </div>
           ))}
         </div>
