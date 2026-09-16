@@ -35,16 +35,17 @@ useEffect(() => {
       </header>
 
       <section className="welcome">
+        <div className="welcome-text">
         <h2>Welcome to Doggy Daycare</h2>
         <p>A safe and fun place for your furry friends!</p>
 
-        {
-        dogs.length > 0 && (
-          <img src={dogs[0].image} alt={dogs[0].name} />
-        )}
-        
+       <button>Meet Our Dogs</button>
+       </div>
+
+        <img src="daycare.jpeg" alt="Dogs" />
       </section>
     </div>
+    
   )
 }
 
