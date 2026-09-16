@@ -47,7 +47,7 @@ useEffect(() => {
               <p>Breed: {dog.breed}</p>
               <p>Sex: {dog.sex}</p>
               <p>present: {dog.present ? "yes" : "no"}</p>
-              <p>Owner: {dog.owner.name} {dog.owner.lastName} ({dog.owner.phoneNumber})</p>
+              <p>Owner: {dog.owner.name} {dog.owner.lastName}</p>
               <p>PhoneNumber: {dog.owner.phoneNumber}</p>
             </div>
           ))}
