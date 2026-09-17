@@ -4,12 +4,14 @@ import Admin from "./components/Admin.jsx";
 import DogCatalog from "./components/DogCatalog.jsx";
 import Attendance from "./components/Attendance.jsx";
 import { getAllDogs } from "./api/dogs-api";
+import Contact from "./components/Contact.jsx";
 
 const SCREENS = {
   WELCOME: "welcome",
   CATALOG: "catalog",
   ADMIN: "admin",
   ATTENDANCE: "attendance",
+  CONTACT: "contact",
 };
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
   const goToDogCatalog = () => changeScreen(SCREENS.CATALOG);
   const goToAdmin = () => changeScreen(SCREENS.ADMIN);
   const goToAttendance = () => changeScreen(SCREENS.ATTENDANCE);
+  const goToContact = () => changeScreen(SCREENS.CONTACT);
 
   useEffect(() => {
     getAllDogs()
@@ -71,7 +74,7 @@ function App() {
               <a onClick={goToAttendance}>Attendance</a>
             </li>
             <li>
-              <a>Contact</a>
+              <a onClick={goToContact}>Contact</a>
             </li>
           </ul>
         </nav>
@@ -128,6 +131,7 @@ function App() {
       {currentScreen === SCREENS.CATALOG && <DogCatalog />}
       {currentScreen === SCREENS.ADMIN && <Admin />}
       {currentScreen === SCREENS.ATTENDANCE && <Attendance />}
+      {currentScreen === SCREENS.CONTACT && <Contact />}
     </div>
   );
 }
