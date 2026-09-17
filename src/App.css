@@ -39,11 +39,13 @@ nav a {
   color: #444;
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease;
   
 }
 
 nav a:hover {
-  color: #4a90e2;
+  color: orange;
 }
 
 h2 {
@@ -79,7 +81,6 @@ p {
   color: #263b35;
   font-size: 42px;
   line-height: 1.2;
-  white-space: nowrap;
 }
 
 .welcome-text p {
@@ -112,4 +113,87 @@ p {
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.what-we-offer {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 40px 30px;
+}
+
+.what-we-offer h2 {
+  margin-bottom: 30px;
+  color: #2f5d50;
+}
+
+.offer-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.offer-card {
+  flex: 1;
+  background-color: white;
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+.offer-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.offer-card h3 {
+  margin-top: 0;
+  color: #2f5d50;
+  font-size: 19px;
+}
+
+.offer-card p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.dog-of-the-day {
+  max-width: 500px;
+  margin: 20px auto 70px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.dog-of-the-day h2 {
+  margin-top: 0;
+  color: #2f5d50;
+  font-size: 30px;
+}
+.dog-of-the-day img {
+  width: 280px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  transition: transform 0.3s ease;
+}
+
+.dog-of-the-day img:hover {
+  transform: scale(1.05);
+}
+
+.dog-of-the-day h3 {
+  margin: 18px 0 5px;
+  font-size: 24px;
+  color: #333;
+}
+
+.dog-of-the-day p {
+  margin: 0;
+  font-size: 17px;
+  color: #66736e;
 }
