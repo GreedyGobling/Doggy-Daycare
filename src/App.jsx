@@ -55,7 +55,6 @@ useEffect(() => {
             </li>
             <li>
               <a onClick="">Contact</a>
-              <a>Contact</a>
             </li>
           </ul>
         </nav>
