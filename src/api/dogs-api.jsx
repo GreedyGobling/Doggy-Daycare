@@ -12,3 +12,17 @@ export async function getAllDogs() {
   const data = await response.json();
   return data.record;
 }
+
+export async function updateBin(dogs) {
+  const res = await fetch(apiURL, {
+    method: "PUT",
+    headers: {
+      "X-Access-Key": ACCESS_KEY,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dogs),
+  });
+  if (!res.ok) throw new Error(`update failed: ${res.status}`);
+}
+
+
