@@ -1,13 +1,14 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getAllDogs } from "../api/dogs-api";
 import "./DogCatalog.css";
 import defaultDog from "../assets/defaultDogImg.jpg";
+import DogDetails from "./DogDetails";
 
 function DogCatalog() {
   const [dogs, setDogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedDog, setSelectedDog] = useState(null);
 
   useEffect(() => {
     getAllDogs()
@@ -21,6 +22,10 @@ function DogCatalog() {
   }
   if (error) {
     return <p className="error">Something went wrong: {error}</p>;
+  }
+
+  if (selectedDog) {
+    return <DogDetails dog={selectedDog} onBack={() => setSelectedDog(null)} />;
   }
 
   return (
@@ -39,6 +44,10 @@ function DogCatalog() {
             <p>Breed: {dog.breed}</p>
             <p>Age: {dog.age}</p>
             <p>Present: {dog.present ? "Present" : "Not Present"}</p>
+
+            <button type="button" onClick={() => setSelectedDog(dog)}>
+              View details
+            </button>
           </div>
         ))}
       </div>
