@@ -30,10 +30,10 @@ function DogCatalog() {
 
   return (
     <section>
-      <h1>Dog Catalog</h1>
+      <h1>Our Dogs</h1>
       <div className="dog-grid">
         {dogs.map((dog) => (
-          <div className="dog-card" key={dog.chipNumber}>
+          <div className="dog-card" key={dog.chipNumber} onClick={() => setSelectedDog(dog)}>
             <img
               src={dog.img}
               onError={(e) => {
