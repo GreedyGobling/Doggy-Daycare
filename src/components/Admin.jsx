@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllDogs, updateBin } from "../api/dogs-api.jsx"
+import "./Admin.css"
 
 function Admin(){
   const [dogs, setDogs] = useState([]);
@@ -49,20 +50,12 @@ useEffect(() => {
     }
   };
 
-  const grid = { display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))" };
-  const card = { border: "1px solid #ccc", borderRadius: 8, padding: 12, textAlign: "left", minWidth: 0 };
-
   return(
   <>
-      <header>
-        <button onClick={() => getAllDogs().then(setDogs)}>Get Dogs</button>
-        <button onClick={() => updateBin(dogs)}>Update</button>
-      </header>
       <section>
-        <h1>hello</h1>
-        <div style={grid}>
+        <div className="admin-grid">
           {dogs.map((dog) => (
-            <div key={dog.chipNumber} style={card}>
+            <div key={dog.chipNumber} className="admin-card">
               <img src={dog.img} alt={dog.name} width="100%" />
               {editing.find((draft) => draft.chipNumber === dog.chipNumber) ? (
                 (() => {
