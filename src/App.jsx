@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import "./App.css";
 import Admin from "./components/Admin.jsx";
 import DogCatalog from "./components/DogCatalog.jsx";
@@ -6,7 +6,6 @@ import DogCatalog from "./components/DogCatalog.jsx";
 const SCREENS = {
   WELCOME: "welcome",
   CATALOG: "catalog",
-  DOGDETAIL: "dogdetail",
   ADMIN: "admin",
 };
 
@@ -15,23 +14,9 @@ function App() {
 
   const goToWelcome = () => setCurrentScreen(SCREENS.WELCOME);
   const goToDogCatalog = () => setCurrentScreen(SCREENS.CATALOG);
-  const goToDogDetail = () => setCurrentScreen(SCREENS.DOGDETAIL);
   const goToAdmin = () => setCurrentScreen(SCREENS.ADMIN);
 
-  const [dogs, setDogs] = useState([]);
-
-  useEffect(() => {
-    fetch("https://api.jsonbin.io/v3/b/6aa7c3abac6210605acad585")
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data.record.record);
-        setDogs(data.record.record);
-      })
-      .catch((error) => console.error("Error fetching dogs:", error));
-  }, []);
+  
 
   return (
     <div>
