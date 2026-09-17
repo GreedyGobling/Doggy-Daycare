@@ -18,6 +18,7 @@ header {
   background-color: #fff;
   padding: 20px 50px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
 }
 
 h1 {
@@ -197,3 +198,35 @@ p {
   font-size: 17px;
   color: #66736e;
 }
+
+@media (max-width: 900 px)  {
+  header {
+    padding: 15px 25px;
+  }
+  h1 {
+    font-size: 26px;
+  }
+  nav ul {
+    gap: 18px;
+  }
+  nav a {
+    font-size: 14px;
+  }
+}
+@media (max-width: 650 px) {
+  header {
+    padding: 12px 15px;
+  }
+  h1 {
+    font-size: 22px;
+  }
+  nav ul {
+    gap: 10px;
+    }
+    nav a {
+      font-size: 12px;
+    }
+}
+
+
+
