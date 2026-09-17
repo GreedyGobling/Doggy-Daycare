@@ -2,12 +2,14 @@ import { useState, useEffect} from "react";
 import "./App.css";
 import Admin from "./components/Admin.jsx";
 import DogCatalog from "./components/DogCatalog.jsx";
+import Attendance from "./components/Attendance.jsx";
 import { getAllDogs } from "./api/dogs-api";
 
 const SCREENS = {
   WELCOME: "welcome",
   CATALOG: "catalog",
   ADMIN: "admin",
+  ATTENDANCE: "attendance",
 };
 
 function App() {
@@ -28,6 +30,7 @@ useEffect(() => {
   const goToWelcome = () => setCurrentScreen(SCREENS.WELCOME);
   const goToDogCatalog = () => setCurrentScreen(SCREENS.CATALOG);
   const goToAdmin = () => setCurrentScreen(SCREENS.ADMIN);
+  const goToAttendance = () => setCurrentScreen(SCREENS.ATTENDANCE);
 
   
 
@@ -48,6 +51,10 @@ useEffect(() => {
               <a onClick={goToAdmin}>Admin Panel</a>
             </li>
             <li>
+              <a onClick={goToAttendance}>Attendance</a>
+            </li>
+            <li>
+              <a onClick="">Contact</a>
               <a>Contact</a>
             </li>
           </ul>
@@ -108,6 +115,7 @@ useEffect(() => {
 
       {currentScreen === SCREENS.CATALOG && <DogCatalog />}
       {currentScreen === SCREENS.ADMIN && <Admin />}
+      {currentScreen === SCREENS.ATTENDANCE && <Attendance />}
     </div>
   );
 }
