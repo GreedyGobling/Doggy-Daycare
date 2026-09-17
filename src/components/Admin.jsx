@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAllDogs, updateBin } from "../api/dogs-api.jsx"
 import "./Admin.css"
+import defaultDog from "../assets/defaultDogImg.jpg";
 
 function Admin(){
   const [dogs, setDogs] = useState([]);
@@ -56,7 +57,9 @@ useEffect(() => {
         <div className="admin-grid">
           {dogs.map((dog) => (
             <div key={dog.chipNumber} className="admin-card">
-              <img src={dog.img} alt={dog.name} width="100%" />
+              <img src={dog.img} alt={dog.name} width="100%" onError={(event) => {
+                                event.currentTarget.src = defaultDog;
+                              }}/>
               {editing.find((draft) => draft.chipNumber === dog.chipNumber) ? (
                 (() => {
                   const draft = editing.find((item) => item.chipNumber === dog.chipNumber);
