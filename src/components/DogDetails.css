@@ -1,0 +1,118 @@
+.dog-details-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.dog-details {
+  width: 100%;
+  max-width: 650px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.dog-card-detail {
+  position: relative;
+  padding: 1.5rem;
+}
+
+.close-card-button {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.close-card-button:hover {
+  background-color: rgba(0, 0, 0, 0.65);
+  transform: none;
+}
+
+
+.dog-detail-hero img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+  background-color: #f5f1eb;
+}
+
+.dog-detail-name {
+  margin-top: 0.8rem;
+}
+
+.dog-detail-name h2 {
+  margin: 0;
+  color: #d9762b;
+  font-size: 2rem;
+}
+
+.dog-detail-name p {
+  margin: 0.3rem 0 0;
+  color: #6b5c4f;
+}
+
+.dog-detail-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.stat-box {
+  background: #f5f1eb;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+}
+
+.stat-box p {
+  margin: 0;
+  color: #6b5c4f;
+}
+
+.dog-detail-owner {
+  grid-column: 1 / -1;
+  background: #f5f1eb;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+}
+
+.owner-info h3 {
+  margin: 0 0 0.4rem;
+}
+
+.owner-info p {
+  margin: 0.2rem 0;
+  color: #6b5c4f;
+}
+
+.present {
+  color: #2f5d50;
+  font-weight: 600;
+}
+
+.not-present {
+  color: #c0392b;
+  font-weight: 600;
+}
