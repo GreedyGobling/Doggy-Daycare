@@ -53,6 +53,18 @@ h1 {
   color: #6b5c4f;
   padding: 0.15rem 1rem;
 }
+.dog-card button {
+  padding: 14px 26px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2f5d50;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 20px;
+}
 
 @media (min-width: 600px) {
   .dog-grid {
