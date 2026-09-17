@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Admin from "./components/Admin.jsx";
 import DogCatalog from "./components/DogCatalog.jsx";
@@ -15,31 +15,48 @@ const SCREENS = {
 function App() {
   const [currentScreen, setCurrentScreen] = useState(SCREENS.WELCOME);
   const [dogOfTheDay, setDogOfTheDay] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-useEffect(() => {
-  getAllDogs()
-    .then((dogs) => {
-      const randomDog = dogs[Math.floor(Math.random() * dogs.length)];
-      setDogOfTheDay(randomDog);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}, []);
+  const changeScreen = (screen) => {
+    setCurrentScreen(screen);
+    setMenuOpen(false);
+  };
 
-  const goToWelcome = () => setCurrentScreen(SCREENS.WELCOME);
-  const goToDogCatalog = () => setCurrentScreen(SCREENS.CATALOG);
-  const goToAdmin = () => setCurrentScreen(SCREENS.ADMIN);
-  const goToAttendance = () => setCurrentScreen(SCREENS.ATTENDANCE);
+  const goToWelcome = () => changeScreen(SCREENS.WELCOME);
+  const goToDogCatalog = () => changeScreen(SCREENS.CATALOG);
+  const goToAdmin = () => changeScreen(SCREENS.ADMIN);
+  const goToAttendance = () => changeScreen(SCREENS.ATTENDANCE);
 
-  
+  useEffect(() => {
+    getAllDogs()
+      .then((dogs) => {
+        const randomDog = dogs[Math.floor(Math.random() * dogs.length)];
+        setDogOfTheDay(randomDog);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <div>
       <header>
         <h1>Doggy Daycare</h1>
 
-        <nav>
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="main-navigation"
+          onClick={() => setMenuOpen((isOpen) => !isOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav id="main-navigation" className={menuOpen ? "nav-open" : ""}>
           <ul>
             <li>
               <a onClick={goToWelcome}>Home</a>
@@ -54,7 +71,7 @@ useEffect(() => {
               <a onClick={goToAttendance}>Attendance</a>
             </li>
             <li>
-              <a onClick="">Contact</a>
+              <a>Contact</a>
             </li>
           </ul>
         </nav>
@@ -62,55 +79,51 @@ useEffect(() => {
 
       {currentScreen === SCREENS.WELCOME && (
         <>
-        <section className="welcome">
-          <div className="welcome-text">
-            <h2>Welcome to Doggy Daycare</h2>
-            <p>A safe and fun place for your furry friends!</p>
+          <section className="welcome">
+            <div className="welcome-text">
+              <h2>Welcome to Doggy Daycare</h2>
+              <p>A safe and fun place for your furry friends!</p>
 
-            <button onClick={goToDogCatalog}>Meet Our Dogs</button>
-          </div>
+              <button onClick={goToDogCatalog}>Meet Our Dogs</button>
+            </div>
 
-          <img src="daycare.jpeg" alt="Dogs" />
-        </section>
+            <img src="daycare.jpeg" alt="Dogs" />
+          </section>
 
-        <section className="what-we-offer">
-         <h2>What We Offer</h2>
+          <section className="what-we-offer">
+            <h2>What We Offer</h2>
 
-          <div className="offer-cards">
+            <div className="offer-cards">
+              <div className="offer-card">
+                <h3>Play & Exercise</h3>
+                <p>Plenty of activity and playtime for your dogs.</p>
+              </div>
 
-          <div className="offer-card">
-           <h3>Play & Exercise</h3>
-            <p>Plenty of activity and playtime for your dogs.</p>
-         </div>
+              <div className="offer-card">
+                <h3>Care & Attention</h3>
+                <p>Every dog gets the care and attention they deserve.</p>
+              </div>
 
-         <div className="offer-card">
-          <h3>Care & Attention</h3>
-           <p>Every dog gets the care and attention they deserve.</p>
-         </div>
+              <div className="offer-card">
+                <h3>Safe Environment</h3>
+                <p>A comfortable and safe place for dogs to relax.</p>
+              </div>
+            </div>
+          </section>
 
-        <div className="offer-card">
-          <h3>Safe Environment</h3>
-           <p>A comfortable and safe place for dogs to relax.</p>
-        </div>
+          <section className="dog-of-the-day">
+            <h2>Dog of the Day</h2>
 
-        </div>
-      </section>
-         
-      <section className="dog-of-the-day">
-       <h2>Dog of the Day</h2>
-
-        {dogOfTheDay && (
-        <>
-         <img src={dogOfTheDay.img} alt={dogOfTheDay.name} />
-          <h3>{dogOfTheDay.name}</h3>
-           <p>{dogOfTheDay.breed}</p>
+            {dogOfTheDay && (
+              <>
+                <img src={dogOfTheDay.img} alt={dogOfTheDay.name} />
+                <h3>{dogOfTheDay.name}</h3>
+                <p>{dogOfTheDay.breed}</p>
+              </>
+            )}
+          </section>
         </>
-         )}
-      </section>
-
-      </>
- )}
-
+      )}
 
       {currentScreen === SCREENS.CATALOG && <DogCatalog />}
       {currentScreen === SCREENS.ADMIN && <Admin />}
