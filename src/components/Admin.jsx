@@ -23,6 +23,14 @@ useEffect(() => {
     );
   };
 
+  const updateOwnerDraft = (chipNumber, field, value) => {
+    setEditing((current) =>
+      current.map((dog) =>
+        dog.chipNumber === chipNumber ? { ...dog, owner: { ...dog.owner, [field]: value } } : dog
+      )
+    );
+  };
+
   const cancelEditing = (chipNumber) => {
     setEditing((current) => current.filter((dog) => dog.chipNumber !== chipNumber));
   };
@@ -68,6 +76,16 @@ useEffect(() => {
                             type={field === 'age' ? 'number' : 'text'}
                             value={draft[field] ?? ''}
                             onChange={(event) => updateDraft(dog.chipNumber, field, event.target.value)}
+                          />
+                        </label>
+                      ))}
+                      {['name', 'lastName', 'phoneNumber'].map((field) => (
+                        <label key={field}>
+                          {field}:
+                          <input
+                            type="text"
+                            value={draft.owner?.[field] ?? ''}
+                            onChange={(event) => updateOwnerDraft(dog.chipNumber, field, event.target.value)}
                           />
                         </label>
                       ))}
