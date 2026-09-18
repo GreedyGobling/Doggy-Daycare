@@ -273,4 +273,31 @@ p {
   nav a {
     font-size: 16px;
   }
+
+    .welcome {
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 30px;
+  }
+
+  .welcome-text {
+    width: 100%;
+    text-align: center;
+  }
+
+  .welcome-text h2 {
+    font-size: 32px;
+  }
+
+  .welcome-text p {
+    font-size: 17px;
+  }
+
+  .welcome img {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    aspect-ratio: 440 / 320;
+    object-fit: cover;
+  }
 }
